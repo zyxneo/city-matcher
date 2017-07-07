@@ -1,0 +1,81 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "kununu-theme",
+        "scope": null,
+        "escapedName": "kununu-theme",
+        "name": "kununu-theme",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "D:\\_www\\github\\kununu"
+    ]
+  ],
+  "_from": "kununu-theme@latest",
+  "_id": "kununu-theme@3.1.0",
+  "_inCache": true,
+  "_location": "/kununu-theme",
+  "_nodeVersion": "7.8.0",
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/kununu-theme-3.1.0.tgz_1491998033182_0.26768240612000227"
+  },
+  "_npmUser": {
+    "name": "karlhorky",
+    "email": "karl.horky@gmail.com"
+  },
+  "_npmVersion": "4.4.4",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "kununu-theme",
+    "scope": null,
+    "escapedName": "kununu-theme",
+    "name": "kununu-theme",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/kununu-theme/-/kununu-theme-3.1.0.tgz",
+  "_shasum": "34255afa18c3251ec6896f66f5948454d76bfeef",
+  "_shrinkwrap": null,
+  "_spec": "kununu-theme",
+  "_where": "D:\\_www\\github\\kununu",
+  "author": {
+    "name": "kununu"
+  },
+  "bugs": {
+    "url": "https://github.com/kununu/theme/issues"
+  },
+  "dependencies": {},
+  "description": "Base scss styles for kununu",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "34255afa18c3251ec6896f66f5948454d76bfeef",
+    "tarball": "https://registry.npmjs.org/kununu-theme/-/kununu-theme-3.1.0.tgz"
+  },
+  "gitHead": "1ac6da5722158a126ac68f4426b409a4f2d81215",
+  "homepage": "https://github.com/kununu/theme#readme",
+  "keywords": [
+    "kununu-theme"
+  ],
+  "license": "ISC",
+  "maintainers": [],
+  "name": "kununu-theme",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kununu/theme.git"
+  },
+  "scripts": {
+    "test": "echo \"No test specified\""
+  },
+  "version": "3.1.0"
+}
