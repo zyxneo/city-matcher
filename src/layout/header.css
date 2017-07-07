@@ -1,0 +1,25 @@
+
+.header__container {
+  display: flex;
+}
+
+.nav {
+  &__link--site {
+    color: var(--white);
+
+    &:hover {
+      color: var(--white);
+    }
+
+    &.is-active {
+      background: var(--grayLighter);
+      color: var(--black);
+
+      &:hover {
+        color: var(--black);
+        text-decoration: none;
+        cursor: default;
+      }
+    }
+  }
+}
