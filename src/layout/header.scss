@@ -1,9 +1,13 @@
 
+@import '../style/kununu-theme/scss/base/variables.scss';
+
 .header__container {
   display: flex;
 }
 
 .nav {
+  height: $navbar-height;
+
   &__link--site {
     color: var(--white);
 

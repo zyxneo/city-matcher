@@ -24,6 +24,7 @@
     "file-loader": "0.11.1",
     "jsx-loader": "0.13.2",
     "node-sass": "4.5.0",
+    "nukleus": "7.11.2",
     "postcss-cssnext": "2.11.0",
     "postcss-import": "10.0.0",
     "postcss-load-config": "1.2.0",

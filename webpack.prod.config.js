@@ -52,17 +52,15 @@ module.exports = {
               sourceMap: true,
               importLoaders: 1 // https://github.com/webpack-contrib/css-loader#importloaders
             } },
-            { loader: 'postcss-loader', options: { sourceMap: true } }
+            { loader: 'postcss-loader', options: { sourceMap: true } },
+            { loader: 'sass-loader' }
           ]
         })
-      }, {
-        test: /\.png$/,
-        loader: 'file-loader'
-      }, {
-        test: /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
-        loader: 'file-loader'
+      },
+      {
+        test: /\.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
+        loader: 'file-loader?name=fonts/[name].[ext]'
       }
-
     ]
   }
 }

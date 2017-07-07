@@ -1,5 +1,3 @@
-import styles from "./navLink.css";
-
 import React from "react";
 import { Link } from "react-router";
 

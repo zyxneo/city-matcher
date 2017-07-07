@@ -1,0 +1,74 @@
+
+@import '../style/kununu-theme/scss/base/variables.scss';
+
+.footer {
+  background: $gray-base;
+  color: $gray-base-40;
+}
+
+.margin-bottom,
+.margin-vertical {
+  margin-bottom: 40px;
+}
+
+.padding {
+  padding: 40px;
+}
+
+.bg-white {
+  background: $white;
+}
+
+.no-wrap {
+  white-space: nowrap;
+}
+
+.text-xl {
+  font-size: 22px;
+  line-height: 70px;
+}
+
+.text-bold {
+  font-weight: 700;
+}
+
+.circle-md-double .circle-icon {
+  line-height: 70px;
+  font-size: 22px;
+  margin: 2px;
+}
+
+.circle-md-double {
+  width: 70px;
+  height: 70px;
+  display: inline-flex;
+  position: relative;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  color: $white;
+  font-size: 22px;
+  margin: 0 10px;
+
+  &:focus,
+  &:hover {
+    text-decoration: inherit;
+    color: $white;
+  }
+}
+
+.margin-right-quarter {
+  margin-right: 10px;
+}
+
+.link-google {
+  background: $red;
+}
+
+.link-github {
+  background: $gray;
+}
+
+.link-linkedin {
+  background: $blue;
+}

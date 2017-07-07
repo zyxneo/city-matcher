@@ -5,10 +5,10 @@ export default class Header extends React.Component {
 
   render() {
     return (
-      <header class="header">
-        <div class="container header__container">
-          <nav class="header__nav nav">
-            <ul role="nav" class="nav__list nav__list--site">
+      <header class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+          <nav class="navbar-left">
+            <ul role="nav" class="nav navbar-nav">
               <NavLink to="/home" className="site" >Home</NavLink>
             </ul>
           </nav>
