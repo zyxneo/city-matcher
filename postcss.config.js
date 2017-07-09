@@ -7,12 +7,7 @@ module.exports = {
       "browserslist": [
         "> 1%",
         "last 2 versions"
-      ],
-      features: {
-        customProperties: {
-          variables: require(path.join(__dirname, "src/colors.js"))
-        }
-      }
+      ]
     })
   ]
 }

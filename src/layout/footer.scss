@@ -3,42 +3,29 @@
 
 .footer {
   background: $gray-base;
-  color: $gray-base-40;
+  color: $gray-base-60;
 }
 
-.margin-bottom,
-.margin-vertical {
-  margin-bottom: 40px;
-}
-
-.padding {
-  padding: 40px;
-}
-
-.bg-white {
+.footerTop {
   background: $white;
 }
 
-.no-wrap {
-  white-space: nowrap;
-}
-
-.text-xl {
+.textXl {
   font-size: 22px;
   line-height: 70px;
 }
 
-.text-bold {
+.textBold {
   font-weight: 700;
 }
 
-.circle-md-double .circle-icon {
+.circleMdDouble .circleIcon {
   line-height: 70px;
   font-size: 22px;
   margin: 2px;
 }
 
-.circle-md-double {
+.circleMdDouble {
   width: 70px;
   height: 70px;
   display: inline-flex;
@@ -61,14 +48,43 @@
   margin-right: 10px;
 }
 
-.link-google {
+.linkGoogle {
   background: $red;
 }
 
-.link-github {
+.linkGithub {
   background: $gray;
 }
 
-.link-linkedin {
+.linkLinkedin {
   background: $blue;
 }
+
+.footerNav {
+  padding: 0;
+  margin: 0;
+
+  li {
+    display: block;
+    padding: 0;
+    margin: 0;
+
+    a {
+      padding: 4px 0;
+      display: inline-block;
+      color: $gray-base-60;
+
+      &:hover {
+        color: $white;
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.footerNavbar {
+  border-top: 1px solid $gray-base-60;
+  margin: 30px 0 0;
+  padding-top: 20px;
+}
+

@@ -116,24 +116,27 @@ export default class HomePage extends React.Component {
           <div className="container-fluid">
             <h1>City-matcher tool</h1>
 
-            <div class="alert alert-info" role="alert">
+            <div className="alert alert-info" role="alert">
               <strong>Please note</strong> Since this is only a mock API, autocomplete data will only be returned for the autocomplete endpoint with the queries `a`, `ab` or `ac`.
             </div>
 
-            <div class="row">
-              <div class="col-sm-12 col-lg-6">
-                {this.state.countryMatch}
+            <div className="row">
+              <div className="col-sm-12 col-lg-6">
+                <div className="form-group">
+                  <p class="form-control-static">{this.state.countryMatch}</p>
+                </div>
               </div>
-              <div class="col-sm-12 col-lg-6">
+              <div className="col-sm-12 col-lg-6">
                 <Autocomplete
                   data={this.state.countryList}
                   id="autocompletes"
-                  label="Select Countries"
+                  label="Select Country"
                   name="autocomplete"
                   placeholder="Type 'a', 'ab' or 'ac'..."
                   scrollOffset={70}
                   scrollTo
                   autoFocus={true}
+                  labelHidden={true}
                   onGetSuggestions={this.onGetSuggestions.bind(this)}
                   onSelectSuggestion={this.onSelectSuggestion.bind(this)}/>
               </div>
