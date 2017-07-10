@@ -47,6 +47,9 @@ export default class Footer extends React.Component {
                 <li>
                   <a href="http://getbootstrap.com/">Bootstrap</a>
                 </li>
+                <li>
+                  <a href="http://leejordan.github.io/reflex/docs/">Reflex</a>
+                </li>
               </ul>
             </div>
           </div>

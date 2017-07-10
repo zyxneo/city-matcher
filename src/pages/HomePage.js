@@ -2,6 +2,9 @@ import React from "react";
 import axios from "axios";
 import Autocomplete from "nukleus/dist/components/Autocomplete";
 
+import grid from "./flexSolution.scss";
+import style from "./homePage.scss";
+
 export default class HomePage extends React.Component {
 
   constructor () {
@@ -120,13 +123,24 @@ export default class HomePage extends React.Component {
               <strong>Please note</strong> Since this is only a mock API, autocomplete data will only be returned for the autocomplete endpoint with the queries `a`, `ab` or `ac`.
             </div>
 
-            <div className="row">
-              <div className="col-sm-12 col-lg-6">
-                <div className="form-group">
-                  <p class="form-control-static">{this.state.countryMatch}</p>
-                </div>
+            <section className={`${grid.grid} ${style.countrySection}`}>
+              <div className={`
+                ${grid.grid__col_12}
+                ${grid.grid__col_sm_6}
+                ${grid.grid_align_center}
+                ${grid.grid_justify_center}
+                ${grid.grid_order_2}
+                ${grid.grid_order_1_sm}
+              `}>
+                <p className={`${style.countryMatch}`}>{this.state.countryMatch}</p>
               </div>
-              <div className="col-sm-12 col-lg-6">
+              <div className={`
+                ${grid.grid__col_12}
+                ${grid.grid__col_sm_6}
+                ${grid.grid__col_md_4}
+                ${grid.grid_order_1}
+                ${grid.grid_order_2_sm}
+              `}>
                 <Autocomplete
                   data={this.state.countryList}
                   id="autocompletes"
@@ -140,7 +154,7 @@ export default class HomePage extends React.Component {
                   onGetSuggestions={this.onGetSuggestions.bind(this)}
                   onSelectSuggestion={this.onSelectSuggestion.bind(this)}/>
               </div>
-            </div>
+            </section>
           </div>
         </main>
       )

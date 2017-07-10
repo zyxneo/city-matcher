@@ -11,3 +11,6 @@ I used [Autocomplete](https://kununu.github.io/nukleus/#/autocomplete) from [nuk
 
 I planned to use [CSSNext](http://cssnext.io/), but for compatibility with Kununu scss I stick to bootatrap naming conventions and scss files.
 
+## Solutions
+
+I picked [Reflex](http://leejordan.github.io/reflex/docs/) grid for building the interface using flexbox. The hyphens are replaced to underscores in classNames in order to easily use them with css-modules. The class names seems to be a bit hazard for complex cases, but it was interesting as an experiment. I already [experimented with flexbox](https://zyxneo.github.io/flexbox/try-flexbox), and used it on [win2day](https://www.win2day.at/).
