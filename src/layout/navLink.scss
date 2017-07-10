@@ -1,0 +1,16 @@
+
+@import '~kununu-theme/scss/base/variables';
+
+.nav__link {
+  padding-top: 20px !important; // dirty bootstrap override
+  padding-bottom: 20px !important;
+
+  &:hover,
+  &:focus {
+    background-color: $green-light !important;
+  }
+}
+
+.is_active {
+  background-color: $green;
+}

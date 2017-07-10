@@ -10,6 +10,7 @@ export default class Header extends React.Component {
           <nav className="navbar-left">
             <ul role="nav" className="nav navbar-nav">
               <NavLink to="/home" className="site" >Home</NavLink>
+              <NavLink to="/about" className="site" >About</NavLink>
             </ul>
           </nav>
 
