@@ -53,7 +53,8 @@ module.exports = {
               sourceMap: true,
               importLoaders: 1, // https://github.com/webpack-contrib/css-loader#importloaders
               modules: true,
-              localIdentName: '[name]---[local]---[hash:base64:5]'
+              localIdentName: '[name]---[local]---[hash:base64:5]',
+              minimize: true
             } },
             { loader: 'postcss-loader', options: { sourceMap: true } },
             { loader: 'sass-loader' }
@@ -63,21 +64,17 @@ module.exports = {
       {
         test: /main\.scss$/,
         exclude: /node_modules/,
-        use: [
-          'style-loader',
-          'css-loader',
-          {
-            loader: 'postcss-loader',
-            options: {
-              plugins: function () {
-                return [
-                  require('autoprefixer')
-                ];
-              }
-            }
-          },
-          'sass-loader'
-        ]
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            { loader: 'css-loader', options: {
+              sourceMap: true,
+              minimize: true
+            } },
+            { loader: 'postcss-loader', options: { sourceMap: true } },
+            { loader: 'sass-loader' }
+          ]
+        })
       },
       {
         test: /\.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
