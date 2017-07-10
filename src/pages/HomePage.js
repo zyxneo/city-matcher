@@ -3,6 +3,7 @@ import axios from "axios";
 import Autocomplete from "nukleus/dist/components/Autocomplete";
 
 import grid from "./flexSolution.scss";
+// import grid from "./gridSolution.scss"; // alternative grid solution
 import style from "./homePage.scss";
 
 export default class HomePage extends React.Component {
@@ -138,6 +139,7 @@ export default class HomePage extends React.Component {
                 ${grid.grid__col_12}
                 ${grid.grid__col_sm_6}
                 ${grid.grid__col_md_4}
+                ${grid.grid_align_center}
                 ${grid.grid_order_1}
                 ${grid.grid_order_2_sm}
               `}>

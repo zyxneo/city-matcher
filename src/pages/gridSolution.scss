@@ -1,0 +1,31 @@
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
+  grid-auto-rows: minmax(100px, auto);
+  padding: 0 20px;
+}
+
+.grid__col_12 {
+  grid-column: 2 / 2;
+  grid-row: 1;
+}
+
+.grid__col_sm_6 {
+  grid-column: 1 / 2;
+  grid-row: 1;
+
+  + .grid__col_sm_6 {
+    grid-column: 2 / 2;
+  }
+}
+
+.grid_align_center {
+  align-self: center;
+}
+
+.grid_justify_center {
+  justify-self: center;
+}
+
