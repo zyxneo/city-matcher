@@ -1,9 +1,9 @@
 import React from "react";
 import axios from "axios";
-import Autocomplete from "nukleus/dist/components/Autocomplete";
+import Paginator from "nukleus/dist/components/Paginator";
+import { Link } from "react-router";
+import CityRow from "../components/CityRow";
 
-import grid from "./flexSolution.scss";
-// import grid from "./gridSolution.scss"; // alternative grid solution
 import style from "./homePage.scss";
 
 export default class HomePage extends React.Component {
@@ -17,7 +17,10 @@ export default class HomePage extends React.Component {
       countryList: { // for the autocomplete
         items: []
       },
-      countryMatch: "<city name>" // whenever the two city name match [string]
+      countryMatch: "<city name>", // whenever the two city name match [string]
+      countriesPerPage: 10,
+      onGetSuggestions: this.onGetSuggestions.bind(this),
+      onSelectSuggestion: this.onSelectSuggestion.bind(this),
     };
   }
 
@@ -115,49 +118,50 @@ export default class HomePage extends React.Component {
 
   render() {
 
-      return (
-        <main className="main">
-          <div className="container-fluid">
-            <h1>City-matcher tool</h1>
+    let { allCountries, countriesPerPage, countryList, onGetSuggestions, onSelectSuggestion } = this.state;
+    // Logic for displaying Countries
 
-            <div className="alert alert-info" role="alert">
-              <strong>Please note</strong> Since this is only a mock API, autocomplete data will only be returned for the autocomplete endpoint with the queries `a`, `ab` or `ac`.
-            </div>
+    // This is probably hacky, but I have not found any documentation how to use the Paginator component
+    let currentPage = this.props.location.query.page || 1;
+    let indexOfLastCountries = currentPage * countriesPerPage;
+    let indexOfFirstCountries = indexOfLastCountries - countriesPerPage;
+    let currentCountries = allCountries.slice(indexOfFirstCountries, indexOfLastCountries);
+    let totalPages = Math.ceil(allCountries.length / countriesPerPage);
 
-            <section className={`${grid.grid} ${style.countrySection}`}>
-              <div className={`
-                ${grid.grid__col_12}
-                ${grid.grid__col_sm_6}
-                ${grid.grid_align_center}
-                ${grid.grid_justify_center}
-                ${grid.grid_order_2}
-                ${grid.grid_order_1_sm}
-              `}>
-                <p className={`${style.countryMatch}`}>{this.state.countryMatch}</p>
-              </div>
-              <div className={`
-                ${grid.grid__col_12}
-                ${grid.grid__col_sm_6}
-                ${grid.grid__col_md_4}
-                ${grid.grid_order_1}
-                ${grid.grid_order_2_sm}
-              `}>
-                <Autocomplete
-                  data={this.state.countryList}
-                  id="autocompletes"
-                  label="Select Country"
-                  name="autocomplete"
-                  placeholder="Type 'a', 'ab' or 'ac'..."
-                  scrollOffset={70}
-                  scrollTo
-                  autoFocus={true}
-                  labelHidden={true}
-                  onGetSuggestions={this.onGetSuggestions.bind(this)}
-                  onSelectSuggestion={this.onSelectSuggestion.bind(this)}/>
-              </div>
-            </section>
+    return (
+      <main className="main">
+        <div className="container-fluid">
+          <h1>City-matcher tool</h1>
+
+          <div className="alert alert-info" role="alert">
+            <strong>Please note</strong> Since this is only a mock API, autocomplete data will only be returned for the autocomplete endpoint with the queries `a`, `ab` or `ac`.
           </div>
-        </main>
-      )
+
+          <section className={`${style.countrySection}`}>
+            {
+              currentCountries.map(function(item) {
+                return <CityRow
+                  key={item.id}
+                  name={item.name}
+                  admin_area={item.admin_area}
+                  countryList={countryList}
+                  onGetSuggestions={onGetSuggestions}
+                  onSelectSuggestion={onSelectSuggestion}
+                />
+              })
+            }
+
+            <div className={style.paginator}>
+              <Paginator
+              totalPages={totalPages}
+              pathname="/home"
+              query={{"page": currentPage}}
+              baseLink={<Link to={{pathname: "/home"}}>1</Link>} />
+            </div>
+          </section>
+
+        </div>
+      </main>
+    )
   }
 }

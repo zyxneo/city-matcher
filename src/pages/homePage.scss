@@ -1,13 +1,16 @@
 
 @import '~kununu-theme/scss/base/variables';
 
-.countryMatch {
-  font-size: 20px;
-  margin: 0;
-}
-
 .countrySection {
   border: 1px solid $gray-base-20;
   border-radius: 4px;
   background: $white;
+  overflow: hidden;
+}
+
+.paginator {
+  padding: 20px 20px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
