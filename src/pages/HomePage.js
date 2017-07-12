@@ -13,11 +13,9 @@ export default class HomePage extends React.Component {
     this.state = {
       allCountries: [], // data from "cities" API
       requestedCountries: [], // data from "autocomplete" API
-      countryQuery: "", // the user input
       countryList: { // for the autocomplete
         items: []
       },
-      countryMatch: "<city name>", // whenever the two city name match [string]
       countriesPerPage: 10,
       onGetSuggestions: this.onGetSuggestions.bind(this),
       onSelectSuggestion: this.onSelectSuggestion.bind(this),
@@ -42,7 +40,6 @@ export default class HomePage extends React.Component {
     this.setState(
       {
         requestedCountries: data,
-        countryQuery: query,
         countryList: {
           items: items
         }
@@ -51,14 +48,10 @@ export default class HomePage extends React.Component {
   }
 
   getCountries (query) {
-    if (query !== this.state.countryQuery &&
-      (query === "a" || query === "ab" || query === "ac") // only for mock data now
-    ) {
-      axios
-        .get(`/api/${query}.json`)
-        .then(res => this.processCountries(res, query))
-        .catch(err => console.log(err));
-    }
+    axios
+      .get(`/api/${query}.json`)
+      .then(res => this.processCountries(res, query))
+      .catch(err => console.log(err));
   }
 
   componentDidMount () {
@@ -88,30 +81,24 @@ export default class HomePage extends React.Component {
     this.getCountries(e.toLowerCase()); // lowercase search string
   }
 
-  onSelectSuggestion (e) {
-    console.log("onSelectSuggestion",e.item);
-    let selectedCountry = e.item;
+  onSelectSuggestion (name, countryList) {
+    console.log("onSelectSuggestion",name, countryList);
+    let selectedCountry = countryList.item;
     let allCountries = this.state.allCountries;
 
     if (typeof(selectedCountry) !== "undefined" && selectedCountry.length) {
-      for (let i = 0; i < allCountries.length; i++) {
-        if (allCountries[i].name.lastIndexOf(selectedCountry) !== -1) {
-          console.clear();
-          // On selection of a result in the autocomplete fields, console.log() the full objects corresponding with both:
-          // - the city in the left column
-          // - the selected item from the dropdown
-          console.log("%c Found!", "background: #18242b; color: #99c613", allCountries[i], e);
-          let countryMatch = allCountries[i].name;
-          let countryQuery = countryMatch;
-          this.setState({countryMatch, countryQuery});
-          return;
-        }
-      }
-      let countryMatch = "Nothing found...";
-      this.setState({countryMatch});
+      let combinedObject = {};
+      combinedObject.city = name;
+      combinedObject.selected = countryList;
+
       console.clear();
-      console.log("%c Nothing found..." , "background: #18242b; color: #f6363f");
-      return;
+      // On selection of a result in the autocomplete fields, console.log() the full objects corresponding with both:
+      // - the city in the left column
+      // - the selected item from the dropdown
+      // Wichtig ist das Ergebnis als kombiniertes Objekt entweder in der console - oder im UI selbst bei “bestätigung” des Autosuggest Items.
+      console.log("%c combinedObject: ", "background: #18242b; color: #99c613", combinedObject);
+
+      return combinedObject;
     }
 
   }

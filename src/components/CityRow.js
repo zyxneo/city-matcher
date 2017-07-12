@@ -5,6 +5,10 @@ import style from "./cityRow.scss";
 
 export default class CityRow extends React.Component {
 
+  onSelectSuggestion (e) {
+    this.props.onSelectSuggestion(this.props.name, e);
+  }
+
   render() {
     return (
       <div className={`${style.cityRow}`}>
@@ -24,7 +28,7 @@ export default class CityRow extends React.Component {
             autoFocus={false}
             labelHidden={true}
             onGetSuggestions={this.props.onGetSuggestions}
-            onSelectSuggestion={this.props.onSelectSuggestion}/>
+            onSelectSuggestion={this.onSelectSuggestion.bind(this)}/>
         </div>
       </div>
     );
