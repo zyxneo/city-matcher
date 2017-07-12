@@ -19,11 +19,12 @@ I picked [Reflex](http://leejordan.github.io/reflex/docs/) grid for building the
 
 * [x] display the countries from API Endpoint “/v1/cities” in the first column
 * [x] display only 10 row, use a pagination
+* [x] autocomplete selection should be saved while paging
 * [ ] clean Component Composition
-* [ ] result should be a combined object in console
+* [x] result should be a combined object in console
 
 ### Nice to have
 
-* [ ] display result as notification
+* [x] display result as notification
 * [ ] Application state should remember on pagination state
 * [ ] responsive css for list

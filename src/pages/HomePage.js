@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import Paginator from "nukleus/dist/components/Paginator";
+import Notification from "nukleus/dist/components/Notification";
 import { Link } from "react-router";
 import CityRow from "../components/CityRow";
 
@@ -19,6 +20,8 @@ export default class HomePage extends React.Component {
       countriesPerPage: 10,
       onGetSuggestions: this.onGetSuggestions.bind(this),
       onSelectSuggestion: this.onSelectSuggestion.bind(this),
+      lastSelection: {},
+      infoVisible: false
     };
   }
 
@@ -85,24 +88,27 @@ export default class HomePage extends React.Component {
     console.log("onSelectSuggestion",country.name, countryList, index);
     let allCountries = this.state.allCountries;
     allCountries[index].selected = countryList;
+
+    let lastSelection = {};
+    lastSelection.city = country.name;
+    lastSelection.selected = countryList;
     this.setState(
       {
-        allCountries
+        allCountries,
+        lastSelection,
+        infoVisible: true
       }
     );
 
-    let combinedObject = {};
-    combinedObject.city = country.name;
-    combinedObject.selected = countryList;
 
     console.clear();
     // On selection of a result in the autocomplete fields, console.log() the full objects corresponding with both:
     // - the city in the left column
     // - the selected item from the dropdown
     // Wichtig ist das Ergebnis als kombiniertes Objekt entweder in der console - oder im UI selbst bei “bestätigung” des Autosuggest Items.
-    console.log("%c combinedObject: ", "background: #18242b; color: #99c613", combinedObject);
+    console.log("%c lastSelection: ", "background: #18242b; color: #99c613", lastSelection);
 
-    return combinedObject;
+    return lastSelection;
 
   }
 
@@ -151,6 +157,10 @@ export default class HomePage extends React.Component {
           </section>
 
         </div>
+        <Notification
+          message={`Last Selection: ${JSON.stringify(this.state.lastSelection, null, '\t')}`}
+          visible={this.state.infoVisible}
+        />
       </main>
     )
   }
