@@ -81,25 +81,28 @@ export default class HomePage extends React.Component {
     this.getCountries(e.toLowerCase()); // lowercase search string
   }
 
-  onSelectSuggestion (name, countryList) {
-    console.log("onSelectSuggestion",name, countryList);
-    let selectedCountry = countryList.item;
+  onSelectSuggestion (country, countryList, index) {
+    console.log("onSelectSuggestion",country.name, countryList, index);
     let allCountries = this.state.allCountries;
+    allCountries[index].selected = countryList;
+    this.setState(
+      {
+        allCountries
+      }
+    );
 
-    if (typeof(selectedCountry) !== "undefined" && selectedCountry.length) {
-      let combinedObject = {};
-      combinedObject.city = name;
-      combinedObject.selected = countryList;
+    let combinedObject = {};
+    combinedObject.city = country.name;
+    combinedObject.selected = countryList;
 
-      console.clear();
-      // On selection of a result in the autocomplete fields, console.log() the full objects corresponding with both:
-      // - the city in the left column
-      // - the selected item from the dropdown
-      // Wichtig ist das Ergebnis als kombiniertes Objekt entweder in der console - oder im UI selbst bei “bestätigung” des Autosuggest Items.
-      console.log("%c combinedObject: ", "background: #18242b; color: #99c613", combinedObject);
+    console.clear();
+    // On selection of a result in the autocomplete fields, console.log() the full objects corresponding with both:
+    // - the city in the left column
+    // - the selected item from the dropdown
+    // Wichtig ist das Ergebnis als kombiniertes Objekt entweder in der console - oder im UI selbst bei “bestätigung” des Autosuggest Items.
+    console.log("%c combinedObject: ", "background: #18242b; color: #99c613", combinedObject);
 
-      return combinedObject;
-    }
+    return combinedObject;
 
   }
 
@@ -126,11 +129,11 @@ export default class HomePage extends React.Component {
 
           <section className={`${style.countrySection}`}>
             {
-              currentCountries.map(function(item) {
+              currentCountries.map(function(item, index) {
                 return <CityRow
                   key={item.id}
-                  name={item.name}
-                  admin_area={item.admin_area}
+                  item={item}
+                  index={(currentPage - 1) * countriesPerPage + index}
                   countryList={countryList}
                   onGetSuggestions={onGetSuggestions}
                   onSelectSuggestion={onSelectSuggestion}
