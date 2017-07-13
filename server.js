@@ -1,24 +1,19 @@
-import path from "path";
-import express from "express";
-import cors from "cors";
-import config from "./config";
+const path = require("path");
+const express = require("express");
+const cors = require("cors");
 
-const server = express();
-const publicPath = express.static(path.join(__dirname, "public"));
-const apiPath = express.static(path.join(__dirname, "api"));
+module.exports = {
+  app: function () {
+    const app = express();
+    const indexPath = path.join(__dirname, "index.html");
+    const publicPath = express.static(path.join(__dirname, "public"));
+    const apiPath = express.static(path.join(__dirname, "api"));
 
-server.set("view engine", "ejs");
+    app.use(cors());
+    app.use("/public", publicPath);
+    app.use("/api", apiPath);
+    app.get("/", function (_, res) { res.sendFile(indexPath);});
 
-server.get("/", (req, res) => {
-  res.render("index", {
-    content: "..."
-  });
-});
-
-server.use(cors());
-server.use("/public", publicPath);
-server.use("/api", apiPath);
-
-server.listen(config.port, () => {
-  console.info("Express listening on port", config.port);
-});
+    return app;
+  }
+};
