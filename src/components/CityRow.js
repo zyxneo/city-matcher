@@ -1,5 +1,6 @@
 import React from "react";
 import Autocomplete from "nukleus/dist/components/Autocomplete";
+import PropTypes from "prop-types";
 
 import style from "./cityRow.scss";
 
@@ -24,7 +25,7 @@ export default class CityRow extends React.Component {
       <div className={`${style.cityRow}`}>
         <div className={`${style.cityRow__city}`}>
           <p className={`${style.cityRow__cityName}`}
-             dangerouslySetInnerHTML={{__html: `${name} <small class="text-muted">(${admin_area})</small>`}}></p>
+            dangerouslySetInnerHTML={{__html: `${name} <small class="text-muted">(${admin_area})</small>`}}></p>
         </div>
         <div className={`${style.cityRow__autocomplete}`}>
           <Autocomplete
@@ -43,5 +44,13 @@ export default class CityRow extends React.Component {
         </div>
       </div>
     );
-  };
+  }
+}
+
+CityRow.propTypes = {
+  item: PropTypes.object.isRequired,
+  index: PropTypes.number.isRequired,
+  countryList: PropTypes.object.isRequired,
+  onSelectSuggestion: PropTypes.func.isRequired,
+  onGetSuggestions: PropTypes.func
 };

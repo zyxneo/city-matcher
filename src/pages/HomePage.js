@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import axios from "axios";
 import Paginator from "nukleus/dist/components/Paginator";
 import Notification from "nukleus/dist/components/Notification";
@@ -25,7 +26,7 @@ export default class HomePage extends React.Component {
     };
   }
 
-  processCountries (res, query) {
+  processCountries (res) {
     // process the promise data
     let data = res.data;
     // prepare the data for the dropdown list
@@ -60,7 +61,7 @@ export default class HomePage extends React.Component {
   componentDidMount () {
     // I assume that the list of countries is always necessary, so I get it and don't count with concurrent requests
     axios
-      .get(`/api/all.json`)
+      .get("/api/all.json")
       .then(res => this.setState(
         {
           allCountries: res.data,
@@ -143,25 +144,29 @@ export default class HomePage extends React.Component {
                   countryList={countryList}
                   onGetSuggestions={onGetSuggestions}
                   onSelectSuggestion={onSelectSuggestion}
-                />
+                />;
               })
             }
 
             <div className={style.paginator}>
               <Paginator
-              totalPages={totalPages}
-              pathname="/home"
-              query={{"page": currentPage}}
-              baseLink={<Link to={{pathname: "/home"}}>1</Link>} />
+                totalPages={totalPages}
+                pathname="/home"
+                query={{"page": currentPage}}
+                baseLink={<Link to={{pathname: "/home"}}>1</Link>} />
             </div>
           </section>
 
         </div>
         <Notification
-          message={`Last Selection: ${JSON.stringify(this.state.lastSelection, null, '\t')}`}
+          message={`Last Selection: ${JSON.stringify(this.state.lastSelection, null, "\t")}`}
           visible={this.state.infoVisible}
         />
       </main>
-    )
+    );
   }
 }
+
+HomePage.propTypes = {
+  location: PropTypes.object
+};

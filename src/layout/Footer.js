@@ -12,9 +12,21 @@ export default class Footer extends React.Component {
               <div className={`${style.marginQuarter} ${style.textXl} ${style.textBold}`}>zyxneo gefällt Dir?</div>
             </div>
             <div className="col-sm-12 col-md-8 col-lg-4 text-center text-white">
-              <a className={`${style.circleMdDouble} ${style.linkGoogle}`} href="mailto:zyxneo@gmail.com?subject=Kununu frontend test" target="_blank"><i className="icon-google3"><span className="sr-only">E-Mail</span></i></a>
-              <a className={`${style.circleMdDouble} ${style.linkGithub}`} href="https://github.com/zyxneo" target="_blank"><i className="icon-github"><span className="sr-only">Github</span></i></a>
-              <a className={`${style.circleMdDouble} ${style.linkLinkedin}`} href="https://www.linkedin.com/in/bal%C3%A1zs-szil%C3%A1gyi-112987121/" target="_blank"><i className="icon-linkedin"><span className="sr-only">Linkedin</span></i></a>
+              <a className={`${style.circleMdDouble} ${style.linkGoogle}`} href="mailto:zyxneo@gmail.com?subject=Kununu frontend test" target="_blank" rel="noopener noreferrer">
+                <i className="icon-google3">
+                  <span className="sr-only">E-Mail</span>
+                </i>
+              </a>
+              <a className={`${style.circleMdDouble} ${style.linkGithub}`} href="https://github.com/zyxneo" target="_blank"rel="noopener noreferrer">
+                <i className="icon-github">
+                  <span className="sr-only">Github</span>
+                </i>
+              </a>
+              <a className={`${style.circleMdDouble} ${style.linkLinkedin}`} href="https://www.linkedin.com/in/bal%C3%A1zs-szil%C3%A1gyi-112987121/" target="_blank"rel="noopener noreferrer">
+                <i className="icon-linkedin">
+                  <span className="sr-only">Linkedin</span>
+                </i>
+              </a>
             </div>
           </div>
         </div>
@@ -58,6 +70,6 @@ export default class Footer extends React.Component {
           </div>
         </div>
       </footer>
-    )
+    );
   }
 }

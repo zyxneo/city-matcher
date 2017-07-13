@@ -1,18 +1,18 @@
-const path = require('path')
-const webpack = require('webpack')
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const path = require("path");
+const webpack = require("webpack");
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
-  devtool: 'source-map',
+  devtool: "source-map",
 
   entry: [
-    './src/index'
+    "./src/index"
   ],
 
   output: {
-    path: path.join(__dirname, 'public'),
-    filename: 'bundle.js',
-    publicPath: '/public/'
+    path: path.join(__dirname, "public"),
+    filename: "bundle.js",
+    publicPath: "/public/"
   },
 
   plugins: [
@@ -24,8 +24,8 @@ module.exports = {
       }
     }),
     new webpack.DefinePlugin({
-      'process.env': {
-        'NODE_ENV': JSON.stringify('production')
+      "process.env": {
+        "NODE_ENV": JSON.stringify("production")
       }
     })
   ],
@@ -46,18 +46,18 @@ module.exports = {
         test: /\.s?css$/,
         exclude: /main\.scss/,
         use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
+          fallback: "style-loader",
           //resolve-url-loader may be chained before sass-loader if necessary
           use: [
-            { loader: 'css-loader', options: {
+            { loader: "css-loader", options: {
               sourceMap: true,
               importLoaders: 1, // https://github.com/webpack-contrib/css-loader#importloaders
               modules: true,
-              localIdentName: '[name]---[local]---[hash:base64:5]',
+              localIdentName: "[name]---[local]---[hash:base64:5]",
               minimize: true
             } },
-            { loader: 'postcss-loader', options: { sourceMap: true } },
-            { loader: 'sass-loader' }
+            { loader: "postcss-loader", options: { sourceMap: true } },
+            { loader: "sass-loader" }
           ]
         })
       },
@@ -65,21 +65,21 @@ module.exports = {
         test: /main\.scss$/,
         exclude: /node_modules/,
         use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
+          fallback: "style-loader",
           use: [
-            { loader: 'css-loader', options: {
+            { loader: "css-loader", options: {
               sourceMap: true,
               minimize: true
             } },
-            { loader: 'postcss-loader', options: { sourceMap: true } },
-            { loader: 'sass-loader' }
+            { loader: "postcss-loader", options: { sourceMap: true } },
+            { loader: "sass-loader" }
           ]
         })
       },
       {
         test: /\.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
-        loader: 'file-loader?name=fonts/[name].[ext]'
+        loader: "file-loader?name=fonts/[name].[ext]"
       }
     ]
   }
-}
+};

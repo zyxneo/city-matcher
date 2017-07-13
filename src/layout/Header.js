@@ -1,5 +1,5 @@
 import React from "react";
-import NavLink from './NavLink';
+import NavLink from "./NavLink";
 
 export default class Header extends React.Component {
 
@@ -16,6 +16,6 @@ export default class Header extends React.Component {
 
         </div>
       </header>
-    )
+    );
   }
 }

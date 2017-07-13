@@ -1,13 +1,11 @@
-const path = require("path");
-
 module.exports = {
   plugins: [
-    require('postcss-import'),
-    require('postcss-cssnext')({
+    require("postcss-import"),
+    require("autoprefixer")({
       "browserslist": [
         "> 1%",
         "last 2 versions"
       ]
     })
   ]
-}
+};
