@@ -54,7 +54,7 @@
     "xml2js": "0.4.17"
   },
   "scripts": {
-    "start": "nodemon --exec babel-node server.js --ignore public/",
+    "start": "node server.js",
     "dev": "webpack-dev-server --hot --history-api-fallback --open",
     "build": "cross-env NODE_ENV=production webpack --config ./webpack.prod.config.js --progress --colors",
     "babel": "babel",
